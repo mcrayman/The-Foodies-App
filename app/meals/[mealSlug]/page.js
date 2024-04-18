@@ -1,10 +1,12 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
-
 import { getMeal } from "@/lib/meals";
 import classes from "./page.module.css";
+export async function generateStaticParams() {
+  // Your code here
 
-export async function generateMetadata({ params }) {
+
+function generateMetadata({ params }) {
   const meal = getMeal(params.mealSlug);
 
   if (!meal) {
@@ -17,7 +19,7 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default function MealDetailsPage({ params }) {
+function MealDetailsPage({ params }) {
   const meal = getMeal(params.mealSlug);
 
   if (!meal) {
@@ -50,4 +52,5 @@ export default function MealDetailsPage({ params }) {
       </main>
     </>
   );
+}
 }
