@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { notFound } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { getMeal, getMeals } from "@/lib/meals";
 import classes from "./page.module.css";
 export async function generateStaticParams() {
@@ -24,10 +24,15 @@ export function generateMetadata({ params }) {
 }
 
 export default function MealDetailsPage({ params }) {
+  const router = useRouter();
   const meal = getMeal(params.mealSlug);
 
   if (!meal) {
-    notFound();
+    // Redirect to a static 404 page
+    if (typeof window !== "undefined") {
+      router.push("/404");
+    }
+    return null;
   }
 
   meal.instructions = meal.instructions.replace(/\n/g, "<br />");
