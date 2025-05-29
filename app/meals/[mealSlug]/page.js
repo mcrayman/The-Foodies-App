@@ -2,10 +2,10 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getMeal } from "@/lib/meals";
 import classes from "./page.module.css";
-export async function generateStaticParams() {
-  // Placeholder implementation
-  return [];
-}
+// export async function generateStaticParams() {
+//   // Placeholder implementation
+//   return [];
+// }
 
 export function generateMetadata({ params }) {
   const meal = getMeal(params.mealSlug);
