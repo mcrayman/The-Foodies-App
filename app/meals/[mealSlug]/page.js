@@ -3,10 +3,11 @@ import { notFound } from "next/navigation";
 import { getMeal } from "@/lib/meals";
 import classes from "./page.module.css";
 export async function generateStaticParams() {
-  // Your code here
+  // Placeholder implementation
+  return [];
+}
 
-
-function generateMetadata({ params }) {
+export function generateMetadata({ params }) {
   const meal = getMeal(params.mealSlug);
 
   if (!meal) {
@@ -19,7 +20,7 @@ function generateMetadata({ params }) {
   };
 }
 
-function MealDetailsPage({ params }) {
+export default function MealDetailsPage({ params }) {
   const meal = getMeal(params.mealSlug);
 
   if (!meal) {
@@ -53,4 +54,4 @@ function MealDetailsPage({ params }) {
     </>
   );
 }
-}
+
